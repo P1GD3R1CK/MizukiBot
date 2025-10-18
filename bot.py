@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 # Trigger word(s) and sticker
 TRIGGER_WORDS = ["mizuki"]   # add as many as you like
-STICKER_ID = 1417677039095513269      # replace with your sticker ID
+STICKER_ID = 1428133923958951997      # replace with your sticker ID
 
 
 @bot.event
