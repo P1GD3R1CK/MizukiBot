@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 # Trigger word(s) and sticker
 TRIGGER_WORDS = ["mizuki"]   # add as many as you like
-STICKER_ID = 1428133923958951997      # replace with your sticker ID
+STICKER_ID = 1428133923958951997  # replace with your sticker ID
 
 
 @bot.event
@@ -41,5 +41,26 @@ async def on_message(message):
     # let commands still work
     await bot.process_commands(message)
 
+from flask import Flask
+from threading import Thread
 
+app = Flask('')
+
+# Define a simple route
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+# Function to run the Flask app
+def run():
+    # On Render/Replit, the port is typically read from environment variables
+    import os
+    port = int(os.environ.get("PORT", 8081))
+    app.run(host='0.0.0.0', port=port)
+
+# Start the Flask server in a separate thread
+def keep_alive():
+    Thread(target=run).start()
+
+keep_alive()
 bot.run(TOKEN)
